@@ -24,7 +24,7 @@ public class MenuScript : MonoBehaviour
 
     public void ExitGame()
     {
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         Debug.Log("Playmode stopped. Normally this would quit the game.");
         UnityEditor.EditorApplication.isPlaying = false;
         #else
