@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Helper : MonoBehaviour
+public static class AppHelper
 {
-    // Start is called before the first frame update
-    void Start()
+#if UNITY_WEBPLAYER
+     public static string webplayerQuitURL = "http://google.com";
+#endif
+    public static void Quit()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBPLAYER
+         Application.OpenURL(webplayerQuitURL);
+#else
+         Application.Quit();
+#endif
     }
 }
