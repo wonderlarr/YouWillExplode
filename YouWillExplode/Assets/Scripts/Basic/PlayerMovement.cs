@@ -5,29 +5,43 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private SpriteRenderer sprite;
 
-    public float walkMult = 1f;
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();  
-    }
+    private Vector2 moveDir;
 
-    // Start is called before the first frame update
-    void Start()
+    // Public or Serialized vars show up in the inspector window in the editor, private vars do not.
+    public float walkSpeed = 1f;
+
+    // Awake is called after object construction
+    private void Awake() 
     {
-        
+        // Rigidbody2D of THIS instance of the prefab
+        rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // Get axis input
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
-        Vector3 move = new Vector3(x, y, 0);
+        moveDir.x = Input.GetAxisRaw("Horizontal");
+        moveDir.y = Input.GetAxisRaw("Vertical");
+    }
 
-        // Move player
-        transform.Translate(move * Time.deltaTime * walkMult);
+    // Fixed update is called once per PHYSICS frame, fixed to 50 times a second (0.02) by default
+    private void FixedUpdate()
+    {
+        // Move player, better method
+        rb.MovePosition(rb.position + moveDir * walkSpeed * Time.fixedDeltaTime);
 
+        // Flip sprite when walking in different directions
+        if (moveDir.x > 0 )
+        {
+            sprite.flipX = false;
+        }
+        else if (moveDir.x < 0)
+        {
+            sprite.flipX = true;
+        }
     }
 }
