@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
+    private Animator animator;
 
     private Vector2 moveDir;
 
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
         // Rigidbody2D of THIS instance of the prefab
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -26,16 +28,22 @@ public class PlayerMovement : MonoBehaviour
         // Get axis input
         moveDir.x = Input.GetAxisRaw("Horizontal");
         moveDir.y = Input.GetAxisRaw("Vertical");
-    }
 
-    // Fixed update is called once per PHYSICS frame, fixed to 50 times a second (0.02) by default
-    private void FixedUpdate()
-    {
-        // Move player, better method
-        rb.MovePosition(rb.position + moveDir * walkSpeed * Time.fixedDeltaTime);
+        //Debug.Log(moveDir);
+
+
+        if (moveDir.sqrMagnitude > 0)
+        {
+            animator.SetBool("Walking", true);
+        }
+        else
+        {
+            animator.SetBool("Walking", false);
+        }
+        
 
         // Flip sprite when walking in different directions
-        if (moveDir.x > 0 )
+        if (moveDir.x > 0)
         {
             sprite.flipX = false;
         }
@@ -43,5 +51,13 @@ public class PlayerMovement : MonoBehaviour
         {
             sprite.flipX = true;
         }
+
+    }
+
+    // Fixed update is called once per PHYSICS frame, fixed to 50 times a second (0.02) by default
+    private void FixedUpdate()
+    {
+        // Move player, better method
+        rb.MovePosition(rb.position + moveDir * walkSpeed * Time.fixedDeltaTime);
     }
 }
