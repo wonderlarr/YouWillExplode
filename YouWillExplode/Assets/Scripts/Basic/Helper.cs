@@ -1,7 +1,7 @@
 public static class AppHelper
 {
 #if UNITY_WEBPLAYER
-     public static string webplayerQuitURL = "http://google.com";
+     public static string webplayerQuitURL = "http://wondertron.games";
 #endif
     public static void Quit()
     {
