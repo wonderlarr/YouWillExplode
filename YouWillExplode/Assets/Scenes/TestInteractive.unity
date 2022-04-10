@@ -169,7 +169,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7776141, y: 1}
+    m_SensorSize: {x: 1.7783505, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -281,7 +281,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 5bce1dfc1f1ab9e4b97afb31b5412201, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -367,7 +367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e6623d5e398a1440a4ed9c98c1b6312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rad: {fileID: 0}
 --- !u!1 &230344835
 GameObject:
   m_ObjectHideFlags: 0
