@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 185018772}
   - component: {fileID: 185018774}
   - component: {fileID: 185018773}
+  - component: {fileID: 185018775}
   m_Layer: 0
   m_Name: Pilot System
   m_TagString: Untagged
@@ -293,7 +294,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 5bce1dfc1f1ab9e4b97afb31b5412201, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -367,6 +368,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &185018775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185018770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6623d5e398a1440a4ed9c98c1b6312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &230344835
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,10 +508,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.07887818
-    y: 0.07943925
-    width: 0.84136724
-    height: 0.8411215
+    x: 0.07661823
+    y: 0.07746479
+    width: 0.84544253
+    height: 0.8450704
   near clip plane: 0
   far clip plane: 1000
   field of view: 34
@@ -7575,7 +7588,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1266017861, guid: 374e5bdf7e5a4da4a89d5d053465147e, type: 3}
+  m_Sprite: {fileID: 162853684, guid: 3d59c4f45a8613a458a20b6cc0759680, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7627,18 +7640,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &2020165786
 Rigidbody2D:
