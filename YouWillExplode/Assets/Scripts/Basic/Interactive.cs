@@ -37,23 +37,17 @@ public class Interactive : MonoBehaviour
     // If needed we can make a child object for this in the future.
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //GetComponent<SpriteRenderer>().material.EnableKeyword("_ENABLED");
-        //GetComponent<SpriteRenderer>().material.SetInt("_ENABLED", 1);
-        Debug.Log("enter");
-        //sprite.material.SetFloat("_OutlineThickness", 1f);
+        sprite.material.SetInt("_ENABLED", 1);
+
+        sprite.material.EnableKeyword("_ENABLED");
 
     }
 
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    sprite.material.SetInt("_ENABLED", 1);
-    //}
-
     private void OnTriggerExit2D(Collider2D collision)
     {
-        //GetComponent<SpriteRenderer>().material.SetInt("_ENABLED", 0);
-        Debug.Log("exit");
-        //sprite.material.SetFloat("_OutlineThickness", 0f);
-
+        // Set exposed bool
+        sprite.material.SetInt("_ENABLED", 0);
+        // Visual set
+        sprite.material.DisableKeyword("_ENABLED");
     }
 }
