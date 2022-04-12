@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ButtonST : MonoBehaviour
+public class ButtonHeldST : MonoBehaviour
 {
     // Private vars
     private int clicked;
@@ -14,8 +14,8 @@ public class ButtonST : MonoBehaviour
 
     // Public vars
     [Header("Subtask Generics")]
-    public bool taskComplete = false;
-    public int taskWeight = 1;
+    public bool subComplete = false;
+    public int subWeight = 1;
 
     [Space]
     [Header("Button Specifics")]
@@ -38,11 +38,11 @@ public class ButtonST : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Add or remove clicktime if clicked or unclicked
-        if (taskComplete)
+        if (subComplete)
         {
             return;
         }
+
         holdTime += Time.deltaTime * clicked;
         holdTime = Mathf.Clamp(holdTime, 0, holdTimeMax);
 
@@ -52,8 +52,8 @@ public class ButtonST : MonoBehaviour
         if (holdTime >= holdTimeMax)
         {
                 
-            taskController.CompleteSubtask(1);
-            taskComplete = true;
+            taskController.CompleteSubtask(subWeight);
+            subComplete = true;
         }
     }
 
