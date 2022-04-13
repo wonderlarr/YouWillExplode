@@ -178,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subComplete: 0
   subWeight: 1
+  taskController: {fileID: 0}
   clickValMax: 3
   clickVal: 0
   decaySpeed: 1
@@ -522,6 +523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subComplete: 0
   subWeight: 1
+  taskController: {fileID: 0}
   holdTimeMax: 1
   holdTime: 0
 --- !u!1 &519420028
@@ -1446,6 +1448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1712714189}
   - component: {fileID: 1712714190}
+  - component: {fileID: 1712714191}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -1527,6 +1530,23 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1712714191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712714188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57b943934fdb05140b477b18cb0cdaa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subComplete: 0
+  subWeight: 1
+  taskController: {fileID: 0}
+  sliderGoal: 0
+  sliderLeniency: 5
 --- !u!1 &1838283090
 GameObject:
   m_ObjectHideFlags: 0

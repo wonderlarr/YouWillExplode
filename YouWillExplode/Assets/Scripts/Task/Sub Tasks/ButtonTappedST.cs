@@ -7,6 +7,8 @@ public class ButtonTappedST : BaseST, IPointerDownHandler
     // Component references
     private TextMeshProUGUI text;
 
+    // Subtask Generics here
+
     [Space]
     [Header("Button Specifics")]
     public float clickValMax = 3f;
