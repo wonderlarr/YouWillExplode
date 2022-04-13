@@ -3,22 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ButtonHeldST : BaseST
+public class StaticSliderST : BaseST
 {
     // Private vars
     private int clicked;
 
     // Component references
+    //private TaskController taskController;
     private TextMeshProUGUI text;
 
     [Space]
-    [Header("Button Specifics")]
-    public float holdTimeMax;
-    public float holdTime;
+    [Header("Slider Specifics")]
+    public float sliderGoal;
+    public float sliderLeniency = 5; // This is only one direction worth, doubled in practice.
 
 
     private void Awake()
     {
+        //taskController = GetComponentInParent<TaskController>();
         text = GetComponentInChildren<TextMeshProUGUI>();
     }
 
@@ -37,7 +39,7 @@ public class ButtonHeldST : BaseST
         }
 
         // Update holdtime, clamped at 0 and max
-        holdTime += Time.deltaTime * clicked;
+/*        holdTime += Time.deltaTime * clicked;
         holdTime = Mathf.Clamp(holdTime, 0, holdTimeMax);
 
         // Update button text with current time
@@ -47,7 +49,7 @@ public class ButtonHeldST : BaseST
         if (holdTime >= holdTimeMax)
         {
             CompleteSubtask();
-        }
+        }*/
     }
 
     void CompleteSubtask()
