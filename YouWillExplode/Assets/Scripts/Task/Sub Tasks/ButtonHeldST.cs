@@ -43,18 +43,24 @@ public class ButtonHeldST : MonoBehaviour
             return;
         }
 
+        // Update holdtime, clamped at 0 and max
         holdTime += Time.deltaTime * clicked;
         holdTime = Mathf.Clamp(holdTime, 0, holdTimeMax);
 
         // Update button text with current time
         text.SetText(holdTime.ToString());
             
+        // check for completion
         if (holdTime >= holdTimeMax)
         {
-                
-            taskController.CompleteSubtask(subWeight);
-            subComplete = true;
+            CompleteSubtask();
         }
+    }
+
+    void CompleteSubtask()
+    {
+        taskController.CompleteSubtask(subWeight);
+        subComplete = true;
     }
 
     public void ClickDown()
