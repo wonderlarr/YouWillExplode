@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subComplete: 0
   subWeight: 1
-  taskController: {fileID: 0}
+  task: {fileID: 1154808904}
   clickValMax: 3
   clickVal: 0
   decaySpeed: 1
@@ -523,7 +523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subComplete: 0
   subWeight: 1
-  taskController: {fileID: 0}
+  task: {fileID: 1154808904}
   holdTimeMax: 1
   holdTime: 0
 --- !u!1 &519420028
@@ -1544,7 +1544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subComplete: 0
   subWeight: 1
-  taskController: {fileID: 0}
+  task: {fileID: 1154808904}
   sliderGoal: 0
   sliderLeniency: 5
 --- !u!1 &1838283090

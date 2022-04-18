@@ -18,15 +18,17 @@ public class ButtonTappedST : BaseST, IPointerDownHandler
     public float decaySpeed = 1f;
 
 
-    private void Awake()
-    {
-        text = GetComponentInChildren<TextMeshProUGUI>();
-    }
+    //private void Awake()
+    //{
+    //    text = GetComponentInChildren<TextMeshProUGUI>();
+    //    //taskController = GetComponentInParent<TaskController>();
+
+    //}
 
     // Start is called before the first frame update
     void Start()
     {
-        text.SetText("0");
+        //text.SetText("0");
     }
 
     // Update is called once per frame
@@ -42,7 +44,7 @@ public class ButtonTappedST : BaseST, IPointerDownHandler
         clickVal = Mathf.Clamp(clickVal, 0, clickValMax);
 
         // Update button text with current value
-        text.SetText(clickVal.ToString());
+        //text.SetText(clickVal.ToString());
             
         // check for completion
         if (clickVal >= clickValMax)
@@ -53,7 +55,7 @@ public class ButtonTappedST : BaseST, IPointerDownHandler
 
     void CompleteSubtask()
     {
-        taskController.CompleteSubtask(subWeight);
+        task.CompleteSubtask(subWeight);
         subComplete = true;
     }
 

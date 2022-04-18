@@ -6,28 +6,28 @@ using TMPro;
 public class StaticSliderST : BaseST
 {
     // Private vars
-    private int clicked;
+    //private int clicked;
 
     // Component references
     //private TaskController taskController;
-    private TextMeshProUGUI text;
+    //private TextMeshProUGUI text;
 
     [Space]
     [Header("Slider Specifics")]
     public float sliderGoal;
-    public float sliderLeniency = 5; // This is only one direction worth, doubled in practice.
+    public float sliderLeniency = 5; // This is for each direction, so 5 will be a 10 effective range.
 
 
     private void Awake()
     {
         //taskController = GetComponentInParent<TaskController>();
-        text = GetComponentInChildren<TextMeshProUGUI>();
+        //text = GetComponentInChildren<TextMeshProUGUI>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        text.SetText("0");
+        //text.SetText("0");
     }
 
     // Update is called once per frame
@@ -54,17 +54,17 @@ public class StaticSliderST : BaseST
 
     void CompleteSubtask()
     {
-        taskController.CompleteSubtask(subWeight);
+        task.CompleteSubtask(subWeight);
         subComplete = true;
     }
 
     public void ClickDown()
     {
-        clicked = 1;
+        //clicked = 1;
     }
 
     public void ClickUp()
     {
-        clicked = -1;
+        //clicked = -1;
     }
 }

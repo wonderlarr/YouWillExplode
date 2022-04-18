@@ -7,11 +7,7 @@ public class BaseST : MonoBehaviour
     public bool subComplete = false;
     public int subWeight = 1;
 
-    public TaskController taskController;
 
-    private void Awake()
-    {
-        taskController = GetComponent<TaskController>();
-    }
+    public TaskController task;
 }
 

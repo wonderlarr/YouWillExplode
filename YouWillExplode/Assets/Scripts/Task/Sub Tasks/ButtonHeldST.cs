@@ -20,6 +20,8 @@ public class ButtonHeldST : BaseST
     private void Awake()
     {
         text = GetComponentInChildren<TextMeshProUGUI>();
+        //taskController = GetComponentInParent<TaskController>();
+
     }
 
     // Start is called before the first frame update
@@ -52,7 +54,7 @@ public class ButtonHeldST : BaseST
 
     void CompleteSubtask()
     {
-        taskController.CompleteSubtask(subWeight);
+        task.CompleteSubtask(subWeight);
         subComplete = true;
     }
 
