@@ -1,0 +1,241 @@
+[gd_scene load_steps=18 format=3 uid="uid://bgub1qetirdbc"]
+
+[ext_resource type="Texture2D" uid="uid://bx7k5wkicn4a7" path="res://textures/grid.png" id="1_8uxe7"]
+[ext_resource type="Texture2D" uid="uid://brrxh2oilwrro" path="res://textures/dev/orange/texture_02.png" id="1_qehc7"]
+[ext_resource type="Script" uid="uid://btcsoc154tbtw" path="res://scenes/mesh_instance_3d_4.gd" id="2_wcnkr"]
+[ext_resource type="Texture2D" uid="uid://cfi4l4tkd64jq" path="res://textures/dev/light/texture_02.png" id="4_j2x5s"]
+[ext_resource type="Texture2D" uid="uid://bujp8vko8x7fl" path="res://textures/button.png" id="5_qh4o4"]
+[ext_resource type="FontFile" uid="uid://c5bi4dbynci2h" path="res://fonts/Kaput-Black-FFP.ttf" id="6_qh4o4"]
+[ext_resource type="BitMap" uid="uid://biwnlx4m1pem8" path="res://textures/button_mask.png" id="6_vijfb"]
+[ext_resource type="FontFile" uid="uid://dpvmig10fauja" path="res://fonts/Hack/Hack-Bold.ttf" id="7_vijfb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2x5s"]
+albedo_texture = ExtResource("1_8uxe7")
+uv1_scale = Vector3(50, 25, 50)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qh4o4"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("StandardMaterial3D_j2x5s")
+add_uv2 = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7gkl"]
+albedo_texture = ExtResource("1_qehc7")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_aosh8"]
+lightmap_size_hint = Vector2i(17, 19)
+material = SubResource("StandardMaterial3D_s7gkl")
+add_uv2 = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vijfb"]
+albedo_texture = ExtResource("4_j2x5s")
+uv1_triplanar = true
+
+[sub_resource type="TorusMesh" id="TorusMesh_wcnkr"]
+lightmap_size_hint = Vector2i(33, 9)
+material = SubResource("StandardMaterial3D_vijfb")
+add_uv2 = true
+inner_radius = 0.25
+outer_radius = 0.5
+
+[sub_resource type="Environment" id="Environment_j2x5s"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vijfb"]
+font = ExtResource("6_qh4o4")
+font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_wcnkr"]
+font = ExtResource("7_vijfb")
+font_size = 30
+font_color = Color(0, 0.8, 0, 1)
+
+[node name="Node3D" type="Node"]
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Sphere" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(20, 0, 0, 0, 15, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("SphereMesh_qh4o4")
+skeleton = NodePath("../..")
+script = ExtResource("2_wcnkr")
+speed = 0.01
+
+[node name="Sphere2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(21, 0, 0, 0, 16, 0, 0, 0, 21, 0, 0, 0)
+mesh = SubResource("SphereMesh_qh4o4")
+skeleton = NodePath("../..")
+script = ExtResource("2_wcnkr")
+speed = 0.01
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -2, 2)
+mesh = SubResource("CylinderMesh_aosh8")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2, 2)
+mesh = SubResource("CylinderMesh_aosh8")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.5, -0.866025, 0, 0.866025, 0.5, -2.5, 0, 2)
+mesh = SubResource("TorusMesh_wcnkr")
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+current = true
+size = 15.612
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D"]
+environment = SubResource("Environment_j2x5s")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+light_energy = 5.0
+spot_range = 45.827
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Ya'll Gonna
+EXplode"
+label_settings = SubResource("LabelSettings_vijfb")
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("5_qh4o4")
+texture_click_mask = ExtResource("6_vijfb")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Host Game"
+label_settings = SubResource("LabelSettings_wcnkr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("5_qh4o4")
+texture_click_mask = ExtResource("6_vijfb")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TextureButton2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Join Game"
+label_settings = SubResource("LabelSettings_wcnkr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton3" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("5_qh4o4")
+texture_click_mask = ExtResource("6_vijfb")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TextureButton3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tutorial"
+label_settings = SubResource("LabelSettings_wcnkr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton4" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("5_qh4o4")
+texture_click_mask = ExtResource("6_vijfb")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TextureButton4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_wcnkr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton5" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("5_qh4o4")
+texture_click_mask = ExtResource("6_vijfb")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TextureButton5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+label_settings = SubResource("LabelSettings_wcnkr")
+horizontal_alignment = 1
+vertical_alignment = 1

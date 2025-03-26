@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://6ura8g43w83"]
+
+[ext_resource type="PackedScene" uid="uid://dj3di880xkbgs" path="res://scenes/console_ui.tscn" id="1_2kium"]
+[ext_resource type="FontFile" uid="uid://474tkt72wwrh" path="res://fonts/Hack/Hack-Regular.ttf" id="2_xil4p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_t6k7n"]
+font = ExtResource("2_xil4p")
+font_size = 14
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 2
+
+[node name="ConsoleUI" parent="." instance=ExtResource("1_2kium")]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Pre-Alpha 0.0.1"
+label_settings = SubResource("LabelSettings_t6k7n")
+horizontal_alignment = 1
+vertical_alignment = 2

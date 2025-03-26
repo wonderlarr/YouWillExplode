@@ -1,0 +1,114 @@
+[gd_scene load_steps=11 format=3 uid="uid://dj3di880xkbgs"]
+
+[ext_resource type="Theme" uid="uid://b1dq7sceoyefs" path="res://console_theme.tres" id="1_50h5k"]
+[ext_resource type="Script" uid="uid://bjg2d7mmfilfh" path="res://scripts/console.gd" id="2_pqdxp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6aqil"]
+bg_color = Color(0.133, 0.149, 0.153, 0.8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqptw"]
+bg_color = Color(0, 0, 0, 0)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2kium"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uukfc"]
+bg_color = Color(0, 0, 0, 0)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4mgr"]
+bg_color = Color(0, 0, 0, 0)
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atbq5"]
+bg_color = Color(0, 0, 0, 0)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qxy8f"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_127ai"]
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_detail = 1
+anti_aliasing = false
+
+[node name="ConsoleUI" type="PanelContainer" node_paths=PackedStringArray("output_label", "input_edit")]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_50h5k")
+theme_override_styles/panel = SubResource("StyleBoxFlat_6aqil")
+script = ExtResource("2_pqdxp")
+output_label = NodePath("MarginContainer/VBoxContainer/MarginContainer/RichTextLabel")
+input_edit = NodePath("MarginContainer/VBoxContainer/VBoxContainer/LineEdit")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+theme_override_constants/line_separation = 4
+theme_override_styles/fill = SubResource("StyleBoxFlat_uqptw")
+theme_override_styles/background = SubResource("StyleBoxFlat_2kium")
+theme_override_styles/focus = SubResource("StyleBoxFlat_uukfc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_j4mgr")
+scroll_following = true
+context_menu_enabled = true
+selection_enabled = true
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0862745, 0.627451, 0.521569, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_atbq5")
+text = "] "
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/caret_width = 8
+theme_override_styles/focus = SubResource("StyleBoxFlat_qxy8f")
+theme_override_styles/normal = SubResource("StyleBoxFlat_127ai")
+keep_editing_on_text_submit = true
+emoji_menu_enabled = false
+deselect_on_focus_loss_enabled = false
+flat = true
+caret_blink = true
+caret_blink_interval = 0.3
+
+[connection signal="gui_input" from="MarginContainer/VBoxContainer/VBoxContainer/LineEdit" to="." method="_on_line_edit_gui_input"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_submitted" from="MarginContainer/VBoxContainer/VBoxContainer/LineEdit" to="." method="execute"]

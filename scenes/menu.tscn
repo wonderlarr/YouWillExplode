@@ -1,0 +1,317 @@
+[gd_scene load_steps=32 format=3 uid="uid://cx5a0c2pnk3vc"]
+
+[ext_resource type="FontFile" uid="uid://c5bi4dbynci2h" path="res://fonts/Kaput-Black-FFP.ttf" id="1_13sgg"]
+[ext_resource type="Texture2D" uid="uid://cnwwxc3gpkyj1" path="res://textures/dev/dark/texture_01.png" id="1_yqeox"]
+[ext_resource type="FontFile" uid="uid://474tkt72wwrh" path="res://fonts/Hack/Hack-Regular.ttf" id="2_i6lef"]
+[ext_resource type="PackedScene" uid="uid://tob8pv6cfmu4" path="res://models/skeleton.fbx" id="2_vjb58"]
+[ext_resource type="Texture2D" uid="uid://brrxh2oilwrro" path="res://textures/dev/orange/texture_02.png" id="3_con2f"]
+[ext_resource type="LightmapGIData" uid="uid://cdyuui8v1a4u7" path="res://scenes/menu.lmbake" id="4_mhnvy"]
+[ext_resource type="Texture2D" uid="uid://bkcvlylo7xvbx" path="res://textures/dev/green/texture_02.png" id="4_v86rl"]
+[ext_resource type="Texture2D" uid="uid://ktk0jwortu4h" path="res://textures/dev/red/texture_02.png" id="5_13sgg"]
+[ext_resource type="Texture2D" uid="uid://dctowt3cnnax8" path="res://textures/dev/purple/texture_02.png" id="6_i6lef"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13sgg"]
+bg_color = Color(0.1, 0.1, 0.1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.352941, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vjb58"]
+albedo_texture = ExtResource("1_yqeox")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_con2f"]
+material = SubResource("StandardMaterial3D_vjb58")
+size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70i5f"]
+albedo_texture = ExtResource("3_con2f")
+
+[sub_resource type="BoxMesh" id="BoxMesh_mhnvy"]
+lightmap_size_hint = Vector2i(14, 21)
+add_uv2 = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mj5lg"]
+albedo_texture = ExtResource("4_v86rl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufwb2"]
+albedo_texture = ExtResource("3_con2f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6cdou"]
+albedo_texture = ExtResource("5_13sgg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i42df"]
+albedo_texture = ExtResource("6_i6lef")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7jp70"]
+albedo_texture = ExtResource("3_con2f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mxgkd"]
+albedo_texture = ExtResource("6_i6lef")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6gyw"]
+albedo_texture = ExtResource("6_i6lef")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3dmrc"]
+albedo_texture = ExtResource("5_13sgg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81l6r"]
+albedo_texture = ExtResource("5_13sgg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rsfmq"]
+albedo_texture = ExtResource("3_con2f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oi1it"]
+albedo_texture = ExtResource("6_i6lef")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fy8yy"]
+albedo_texture = ExtResource("4_v86rl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6wigr"]
+albedo_texture = ExtResource("5_13sgg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lnf0i"]
+albedo_texture = ExtResource("6_i6lef")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffqrc"]
+albedo_texture = ExtResource("4_v86rl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x16fv"]
+albedo_texture = ExtResource("4_v86rl")
+
+[sub_resource type="Environment" id="Environment_v86rl"]
+background_mode = 1
+background_color = Color(0, 0.121569, 0, 1)
+
+[node name="Menu" type="Node3D"]
+
+[node name="Ver" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -111.5
+offset_top = -23.0
+offset_right = 111.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_i6lef")
+theme_override_font_sizes/font_size = 14
+text = "v0.0.1 | FAR FROM FINISHED"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.223529, 0, 1)
+theme_override_fonts/font = ExtResource("1_13sgg")
+theme_override_font_sizes/font_size = 96
+text = "Ultra
+War"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i6lef")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_13sgg")
+text = "Join Game"
+
+[node name="Button2" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i6lef")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_13sgg")
+text = "Host Game"
+
+[node name="Button3" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i6lef")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_13sgg")
+text = "Settings"
+
+[node name="Button5" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i6lef")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_13sgg")
+text = "Play Tutorial"
+
+[node name="Button4" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i6lef")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_13sgg")
+text = "Quit"
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("BoxMesh_con2f")
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -45, 1.5, 0)
+fov = 60.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -0.173648, 0.984808, 0, -0.984808, -0.173648, 0, 23.5, 0)
+light_color = Color(0, 1, 0, 1)
+light_energy = 0.01
+light_bake_mode = 1
+shadow_enabled = true
+
+[node name="skeleton" parent="Node3D" instance=ExtResource("2_vjb58")]
+transform = Transform3D(-0.371368, 0, -0.928486, 0, 1, 0, 0.928486, 0, -0.371368, -43, 0.5, 0.75)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -10.5, 0.95, -32.5)
+material_override = SubResource("StandardMaterial3D_70i5f")
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.5, 1.45, -26.5)
+material_override = SubResource("StandardMaterial3D_mj5lg")
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 5.5, 4.95, 10.5)
+material_override = SubResource("StandardMaterial3D_ufwb2")
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 9.5, 0.95, -23.5)
+material_override = SubResource("StandardMaterial3D_6cdou")
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8, 0.95, 19.5)
+material_override = SubResource("StandardMaterial3D_i42df")
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 19, 4.45, -18)
+material_override = SubResource("StandardMaterial3D_7jp70")
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 6, 0.95, -15.5)
+material_override = SubResource("StandardMaterial3D_mxgkd")
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -16, 0.95, -38)
+material_override = SubResource("StandardMaterial3D_g6gyw")
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -5, 0.95, -25)
+material_override = SubResource("StandardMaterial3D_3dmrc")
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -5, 0.95, 13)
+material_override = SubResource("StandardMaterial3D_81l6r")
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -15, 0.95, 21.5)
+material_override = SubResource("StandardMaterial3D_rsfmq")
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -18.5, 0.95, 26.5)
+material_override = SubResource("StandardMaterial3D_oi1it")
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -18.5, 0.95, 26.5)
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -18.5, 0.95, 31)
+material_override = SubResource("StandardMaterial3D_fy8yy")
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -18.5, 0.95, 31)
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -17.5, 0.95, 23.5)
+material_override = SubResource("StandardMaterial3D_6wigr")
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5.5, 0.95, -3.5)
+material_override = SubResource("StandardMaterial3D_lnf0i")
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 14.5, 5.45, -2.5)
+material_override = SubResource("StandardMaterial3D_ffqrc")
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0.5, 2.95, 15.5)
+material_override = SubResource("StandardMaterial3D_x16fv")
+mesh = SubResource("BoxMesh_mhnvy")
+skeleton = NodePath("../..")
+
+[node name="LightmapGI" type="LightmapGI" parent="Node3D"]
+quality = 3
+supersampling = true
+bounces = 8
+directional = true
+light_data = ExtResource("4_mhnvy")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, -4)
+light_color = Color(0.25098, 1, 0.25098, 1)
+light_energy = 2.99
+omni_range = 25.0
+omni_attenuation = 0.75
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D"]
+environment = SubResource("Environment_v86rl")
