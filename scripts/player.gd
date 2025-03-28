@@ -37,7 +37,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif event.is_action_pressed("use"):
 			if raycast.is_colliding():
 				var collided : Area3D = raycast.get_collider()
-				if collided is UseableThing:
+				if collided is UsableThing:
 					collided.OnUse()
 		
 

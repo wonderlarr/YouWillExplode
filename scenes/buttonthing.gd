@@ -1,4 +1,4 @@
-extends UseableThing
+extends UsableThing
 
 func OnUse() -> void:
-	print("button pressy")
+	$ShieldCamera.make_current()
