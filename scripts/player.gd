@@ -7,6 +7,8 @@ var jump_velocity: float = 12
 var decel: float = 10
 var accel: float = 10
 
+enum input_modes {onfoot, shield}
+
 #Exports
 @export var camera: Camera3D
 @export var raycast: RayCast3D
@@ -14,6 +16,8 @@ var accel: float = 10
 #Storage vars
 var dir: Vector2 = Vector2.ZERO
 var jump_buffer: float = 0
+var input_mode : int = input_modes.onfoot
+var input_target : Node3D = null
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -44,28 +48,37 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:	
 	#TODO acceleration based movement
 	#Grounded movement
-	if dir == Vector2.ZERO:
-		#velocity = velocity.move_toward(Vector3.ZERO, decel)
-		velocity.x = move_toward(velocity.x, 0, decel)
-		velocity.z = move_toward(velocity.z, 0, decel)
-	else:
-		velocity.x = move_toward(velocity.x, dir.x * speed, accel)
-		velocity.z = move_toward(velocity.z, dir.y * speed, accel)
-		velocity = velocity.rotated(Vector3.UP, rotation.y)
-		
-		
-	#if is_on_floor():
-		#velocity = Vector3(dir.x * speed, velocity.y, dir.y * speed).rotated(Vector3.UP, rotation.y)
-	#else:
-		#velocity = Vector3(dir.x * speed * 0.65, velocity.y, dir.y * speed * 0.65).rotated(Vector3.UP, rotation.y)
 	
-	if not is_on_floor():
-		velocity += get_gravity() * delta * 3
-		
-	if jump_buffer > 0:
-		jump_buffer -= delta
-		if is_on_floor():
-			#TODO movement boost when jumping forward
-			velocity.y += jump_velocity
+	match input_mode:
+		input_modes.onfoot:
+			if dir == Vector2.ZERO:
+				#velocity = velocity.move_toward(Vector3.ZERO, decel)
+				velocity.x = move_toward(velocity.x, 0, decel)
+				velocity.z = move_toward(velocity.z, 0, decel)
+			else:
+				velocity.x = move_toward(velocity.x, dir.x * speed, accel)
+				velocity.z = move_toward(velocity.z, dir.y * speed, accel)
+				velocity = velocity.rotated(Vector3.UP, rotation.y)
+				
+				
+			#if is_on_floor():
+				#velocity = Vector3(dir.x * speed, velocity.y, dir.y * speed).rotated(Vector3.UP, rotation.y)
+			#else:
+				#velocity = Vector3(dir.x * speed * 0.65, velocity.y, dir.y * speed * 0.65).rotated(Vector3.UP, rotation.y)
+			
+			if not is_on_floor():
+				velocity += get_gravity() * delta * 3
+				
+			if jump_buffer > 0:
+				jump_buffer -= delta
+				if is_on_floor():
+					#TODO movement boost when jumping forward
+					velocity.y += jump_velocity
+		input_modes.shield:
+			input_target.rotation.x += dir.x * 5
+			input_target.rotation.y += dir.y * 5
+		_:
+			pass
+	
 		
 	move_and_slide()

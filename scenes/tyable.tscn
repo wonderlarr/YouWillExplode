@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cnwwxc3gpkyj1" path="res://textures/dev/dark/texture_01.png" id="1_uvhq5"]
 [ext_resource type="PackedScene" uid="uid://8kyjtsrh1h05" path="res://scenes/player.tscn" id="2_7phys"]
 [ext_resource type="Texture2D" uid="uid://bx7k5wkicn4a7" path="res://textures/grid.png" id="3_7phys"]
-[ext_resource type="Script" uid="uid://cs0150btgtxck" path="res://scenes/buttonthing.gd" id="4_xucie"]
+[ext_resource type="Script" uid="uid://cs0150btgtxck" path="res://scripts/buttonthing.gd" id="4_xucie"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7phys"]
 albedo_texture = ExtResource("1_uvhq5")
@@ -18,6 +18,12 @@ uv1_world_triplanar = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_s11f7"]
 size = Vector3(1.5, 1, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s11f7"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0.810121, 0.735475, 0.279398, 1)
+albedo_texture = ExtResource("3_7phys")
+
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xucie"]
 panorama = ExtResource("3_7phys")
 
@@ -29,12 +35,6 @@ background_mode = 2
 sky = SubResource("Sky_s11f7")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s11f7"]
-transparency = 1
-blend_mode = 1
-albedo_color = Color(0.810121, 0.735475, 0.279398, 1)
-albedo_texture = ExtResource("3_7phys")
 
 [node name="Node3D" type="Node3D"]
 
@@ -69,6 +69,10 @@ shape = SubResource("BoxShape3D_s11f7")
 
 [node name="ShieldCamera" type="Camera3D" parent="CSGCombiner3D/CSGBox3D4/UsableThing"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.5, 0.5)
+
+[node name="ShieldShape" type="CSGSphere3D" parent="CSGCombiner3D/CSGBox3D4/UsableThing"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.5, -1)
+material = SubResource("StandardMaterial3D_s11f7")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.5, -3.5)
@@ -115,7 +119,3 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_uvhq5")
-
-[node name="ShieldShape" type="CSGSphere3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
-material = SubResource("StandardMaterial3D_s11f7")
